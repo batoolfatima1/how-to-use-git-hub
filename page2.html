@@ -1,0 +1,159 @@
+ <html>
+ <body>
+     <head>
+        <link rel="stylesheet" href="https://product.hubspot.com/hs-fs/hub/51294/hub_generated/template_assets/35734039601/1602748622580/IL-HSBlog2/css/main.min.css">
+        <link rel="stylesheet" href="https://cdn2.hubspot.net/hub/-1/hub_generated/module_assets/-2712622/1649442479968/module_-2712622_Site_Search_Input.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=AvenirNext:regular,400,500,600,700|Rubik:regular&amp;display=swap">
+            
+     </head>
+ 
+
+  <div class="body-container body-container--blog-post">
+
+    
+    <div class="content-wrapper">
+      
+      <center><img src="logo.png" alt="Girl in a jacket"> </center> 
+      <article class="blog-post">
+        <div class="blog-post__body">
+            <h1 style="font-weight: bold;
+            text-decoration: none;
+            font-family: AvenirNext;
+            font-style: normal;
+            color: #33475b;
+            font-size: 34px;"><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">An Intro to Git and GitHub for Beginners </span></h1>
+          
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p>New to git? Follow the steps below to get comfortable making changes to the code base, opening up a pull request (PR), and merging code into the primary branch. Any important git and GitHub terms are in bold with links to the official git reference materials.&nbsp;</p>
+<p><!--more--></p>
+<h2 style="font-weight: bold;">Step 0: Install git and create a GitHub account&nbsp;</h2>
+<p>The first two things you'll want to do are install git and create a free GitHub account.</p>
+<p>Follow the instructions<a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" rel="noopener" target="_blank"><span> here</span></a> to install git (if it's not already installed). Note that for this tutorial we will be using git on the command line only. While there are some great git GUIs (graphical user interfaces), I think it's easier to learn git using git-specific commands first and then to try out a git GUI once you're more comfortable with the command. A note: 95% of other online git resources and discussions will also be for the command-line interface.&nbsp;</p>
+<p>Once you've done that, create a GitHub account <a href="https://github.com/join" rel="noopener" target="_blank"><span>here</span></a>.</p>
+<blockquote>
+<h4 style="font-weight: bold;">Git and GitHub</h4>
+<p>A quick aside: git and GitHub are <strong><em>not </em></strong>the same thing. Git is an open-source, version control tool created in 2005 by developers working on the Linux operating system; GitHub is a company founded in 2008 that makes tools which integrate with git. You do not need GitHub to use git, but you cannot use GitHub without using git. There are many other alternatives to GitHub, such as GitLab, BitBucket, and “host-your-own” solutions such as gogs and gittea. All of these are referred to in git-speak as “remotes”, and all are completely optional. You do not need to use a remote to use git, but it will make sharing your code with others easier.</p>
+</blockquote>
+<h2 style="font-weight: bold;">Step 1: Create a local git repository&nbsp;</h2>
+<p>When creating a new project on your local machine using git, you'll first create a new <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository" rel="noopener" target="_blank"><span>repository</span></a> (or often, 'repo', for short).&nbsp;</p>
+<p>To use git we'll be using the terminal. If you don't have much experience with the terminal and basic commands, <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview" rel="noopener" target="_blank"><span>check out this tutorial</span></a> (If you don’t want/ need a short history lesson, skip to step three.)</p>
+<p>To begin, open up a terminal and move to where you want to place the project on your local machine using the cd (change directory) command. For example, if you have a 'projects' folder on your desktop, you'd do something like:</p>
+<p>
+<script src="https://gist.github.com/cubeton/67a84eb876984f0b5785.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<p>To initialize a git repository in the root of the folder, run the <a href="http://git-scm.com/docs/git-init" rel="noopener" target="_blank"><span>git init</span></a> command:&nbsp;</p>
+<script src="https://gist.github.com/cubeton/89793ba1bc947f64658e.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+<h2 style="font-weight: bold;">Step 2: Add a new file to the repo</h2>
+<p>Go ahead and add a new file to the project, using any text editor you like or running a <a href="http://linux.die.net/man/1/touch" rel="noopener" target="_blank"><span>touch</span></a> command. `touch newfile.txt` just creates and saves a blank file named newfile.txt.&nbsp;</p>
+<p>Once you've added or modified files in a folder containing a git repo, git will notice that&nbsp; the file exists inside the repo. But, git won't track the file unless you explicitly tell it to. Git only saves/manages changes to files that it <em>tracks</em>, so we’ll need to send a command to confirm that yes, we want git to track our new file.</p>
+<p>
+<script src="https://gist.github.com/cubeton/2d8f224bede4c2dde86b.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<p>After creating the new file, you can use the <a href="http://git-scm.com/docs/git-status" rel="noopener" target="_blank"><span>git status</span></a> command to see which files git knows exist.</p>
+<p>
+<script src="https://gist.github.com/cubeton/02e849bbffcbea1e9a61.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<p>What this basically says is, "Hey, we noticed you created a new file called mnelson.txt, but unless you use the 'git add' command we aren't going to do anything with it."</p>
+<blockquote>
+<h4 style="font-weight: bold;">An interlude: The staging environment, the commit, and you</h4>
+<p>One of the most confusing parts when you're first learning git is the concept of the staging environment and how it relates to a commit.</p>
+<p>A <a href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#:~:text=the%20repository%20owner.-,commit,who%20made%20them%20and%20when." rel="noopener" target="_blank"><span>commit</span></a> is a record of what changes you have made since the last time you made a commit. Essentially, you make changes to your repo (for example, adding a file or modifying one) and then tell git to put those changes into a commit.</p>
+<p>Commits make up the essence of your project and allow you to jump to the state of a project at any other commit.</p>
+<p>So, how do you tell git which files to put into a commit? This is where the <a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository" rel="noopener" target="_blank"><span>staging environment or index</span></a> come in. As seen in Step 2, when you make changes to your repo, git notices that a file has changed but won't do anything with it (like adding it in a commit).</p>
+<p>To add a file to a commit, you first need to add it to the staging environment. To do this, you can use the <a href="http://git-scm.com/docs/git-add" rel="noopener" target="_blank"><span>git add</span></a> &lt;filename&gt; command (see Step 3 below).</p>
+<p>Once you've used the git add command to add all the files you want to the staging environment, you can then tell git to package them into a commit using the <a href="http://git-scm.com/docs/git-commit" rel="noopener" target="_blank"><span>git commit</span></a> command.&nbsp;</p>
+<p>Note: The staging environment, also called 'staging', is the new preferred term for this, but you can also see it referred to as the 'index'.</p>
+</blockquote>
+<h2 style="font-weight: bold;">Step 3: Add a file to the staging environment</h2>
+<p>Add a file to the staging environment using the git add command.&nbsp;</p>
+<p>If you rerun the git status command, you'll see that git has added the file to the staging environment (notice the "Changes to be committed" line).&nbsp;</p>
+<p><span>
+<script src="https://gist.github.com/cubeton/28f7bea3b232f67e031c.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</span></p>
+<p>To reiterate, the file has <strong>not&nbsp;</strong>yet been added to a commit, but it's about to be.</p>
+<h2 style="font-weight: bold;">Step 4: Create a commit</h2>
+<p>It's time to create your first commit!</p>
+<p>Run the command <code>git commit -m "Your message about the commit"</code></p>
+<p>
+<script src="https://gist.github.com/cubeton/1068d965d147b4039e4d.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<p>The message at the end of the commit should be something related to what the commit contains - maybe it's a new feature, maybe it's a bug fix, maybe it's just fixing a typo. Don't put a message like "asdfadsf" or "foobar". That makes the other people who see your commit sad. Very, very, sad. Commits live forever in a repository (technically you <em>can</em> delete them if you really, really need to but it’s messy), so if you leave a clear explanation of your changes it can be extremely helpful for future programmers (perhaps future you!) who are trying to figure out why some change was made years later.</p>
+<h2 style="font-weight: bold;">Step 5: Create a new branch</h2>
+<p>Now that you've made a new commit, let's try something a little more advanced.</p>
+<p>Say you want to make a new feature but are worried about making changes to the main project while developing the feature. This is where <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell" rel="noopener" target="_blank"><span>git branches</span></a> come in.&nbsp;</p>
+<p>Branches allow you to move back and forth between 'states' of a project. Official git docs describe branches this way: ‘A branch in Git is simply a lightweight movable pointer to one of these commits.’ For instance, if you want to add a new page to your website you can create a new branch just for that page without affecting the main part of the project. Once you're done with the page, you can <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" rel="noopener" target="_blank"><span>merge</span></a> your changes from your branch into the primary branch. When you create a new branch, Git keeps track of which commit your branch 'branched' off of, so it knows the history behind all the files.&nbsp;</p>
+<p>Let's say you are on the primary branch and want to create a new branch to develop your web page. Here's what you'll do: Run <a href="http://git-scm.com/docs/git-checkout" rel="noopener" target="_blank"><span>git checkout -b &lt;my branch name&gt;</span></a>. This command will automatically create a new branch and then 'check you out' on it, meaning git will move you to that branch, off of the primary branch.</p>
+<p>After running the above command, you can use the <a href="http://git-scm.com/docs/git-branch" rel="noopener" target="_blank"><span>git branch</span></a> command to confirm that your branch was created:</p>
+<p>
+<script src="https://gist.github.com/cubeton/fa25a25f322a2cd5f405.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<p>The branch name with the asterisk next to it indicates which branch you're on at that given time.&nbsp;</p>
+<blockquote>
+<h4 style="font-weight: bold;">A note on branch names</h4>
+<p>By default, every git repository’s first branch is named `master` (and is typically used as the primary branch in the project). As part of the tech industry’s general anti-racism work, some groups have begun to use alternate names for the default branch (we are using “primary” in this tutorial, for example). In other documentation and discussions, you may see “master”, or other terms, used to refer to the primary branch. Regardless of the name, just keep in mind that nearly every repository has a primary branch that can be thought of as the official version of the repository. If it’s a website, then the primary branch is the version that users see. If it’s an application, then the primary branch is the version that users download. This isn’t <em>technically</em> necessary (git doesn’t treat any branches differently from other branches), but it’s how git is traditionally used in a project.</p>
+<p>If you are curious about the decision to use different default branch names, GitHub has an explanation of <em>their</em> change here: <a href="https://github.com/github/renaming" rel="noopener" target="_blank"><span>https://github.com/github/renaming</span></a></p>
+<p>Now, if you switch back to the primary branch and make some more commits, your new branch won't see any of those changes until you <a href="http://git-scm.com/docs/git-merge" rel="noopener" target="_blank"><span>merge</span></a> those changes onto your new branch.</p>
+</blockquote>
+<h2 style="font-weight: bold;">Step 6: Create a new repository on GitHub</h2>
+<p>If you only want to keep track of your code locally, you don't need to use GitHub. But if you want to work with a team, you can use GitHub to collaboratively modify the project's code.</p>
+<p>To create a new repo on GitHub, log in and go to the GitHub home page. <span>You can find the “New repository” option under the “+” sign next to your profile picture, in the top right corner of the navbar</span>:</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=600&amp;name=Git_1.png" alt="Git_1" width="600" style="width: 600px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=300&amp;name=Git_1.png 300w, https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=600&amp;name=Git_1.png 600w, https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=900&amp;name=Git_1.png 900w, https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=1200&amp;name=Git_1.png 1200w, https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=1500&amp;name=Git_1.png 1500w, https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=1800&amp;name=Git_1.png 1800w" sizes="(max-width: 600px) 100vw, 600px"></p>
+<p>&nbsp;</p>
+<p>After clicking the&nbsp;button, GitHub will ask you to name your repo and provide a brief description:</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=512&amp;name=Git_2.png" alt="Git_2" width="512" style="width: 512px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=256&amp;name=Git_2.png 256w, https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=512&amp;name=Git_2.png 512w, https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=768&amp;name=Git_2.png 768w, https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=1024&amp;name=Git_2.png 1024w, https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=1280&amp;name=Git_2.png 1280w, https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=1536&amp;name=Git_2.png 1536w" sizes="(max-width: 512px) 100vw, 512px"></p>
+<p>When you're done filling out the information, press the 'Create repository' button to make your new repo.</p>
+<p>GitHub will ask if you want to create a new repo from scratch or if you want to add a repo you have created locally. In this case, since we've already created a new repo locally, we want to push that onto GitHub so follow the '....or push an existing repository from the command line' section:&nbsp;</p>
+<h3>
+<script src="https://gist.github.com/cubeton/3a2616c44e35ca68a6b0.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</h3>
+<p>(You'll want to change the URL in the first command line to what GitHub lists in this section since your GitHub username and repo name are different.)</p>
+<h2 style="font-weight: bold;">Step 7: Push a branch to GitHub</h2>
+<p>Now we'll push the commit in your branch to your new GitHub repo. This allows other people to see the changes you've made. If they're approved by the repository's owner, the changes can then be merged into the primary branch.</p>
+<p>To push changes onto a new branch on GitHub, you'll want to run <a href="http://git-scm.com/docs/git-push" rel="noopener" target="_blank"><span>git push</span></a> origin yourbranchname. GitHub will automatically create the branch for you on the remote repository:</p>
+<script src="https://gist.github.com/cubeton/bf8274609c344b6d0e70.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+<p>You might be wondering what that "origin" word means in the command above. What happens is that when you clone a remote repository to your local machine, git creates an alias for you. In nearly all cases this alias is called "<a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes" rel="noopener" target="_blank"><span>origin</span></a>." It's essentially shorthand for the remote repository's URL. So, to push your changes to the remote repository, you could've used either the command: git push git@github.com:git/git.git yourbranchname or git push origin yourbranchname</p>
+<p>(If this is your first time using GitHub locally, it might prompt you to log in with your GitHub username and password.)</p>
+<p>If you refresh the GitHub page, you'll see note saying a branch with your name has just been pushed into the repository. You can also click the 'branches' link to see your branch listed there.</p>
+<p><a href="https://cloud.githubusercontent.com/assets/5241432/9189475/da30eb86-3fb6-11e5-934f-ca596a2cac69.png" target="_blank" rel="noopener"><img src="https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=869&amp;name=Git_3.png" alt="Git_3" width="869" style="width: 869px; display: block; margin-left: auto; margin-right: auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=435&amp;name=Git_3.png 435w, https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=869&amp;name=Git_3.png 869w, https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=1304&amp;name=Git_3.png 1304w, https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=1738&amp;name=Git_3.png 1738w, https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=2173&amp;name=Git_3.png 2173w, https://product.hubspot.com/hs-fs/hubfs/Git_3.png?width=2607&amp;name=Git_3.png 2607w" sizes="(max-width: 869px) 100vw, 869px"></a></p>
+<p>Now click the green button in the screenshot above. We're going to make a <strong>pull request</strong>!</p>
+<h2 style="font-weight: bold;">Step 8: Create a pull request (PR)</h2>
+<p>A pull request (or PR) is a way to alert a repo's owners that you want to make some changes to their code. It allows them to review the code and make sure it looks good before putting your changes on the primary branch.</p>
+<p>This is what the PR page looks like before you've submitted it:</p>
+<p><a href="https://cloud.githubusercontent.com/assets/5241432/9189500/4688c07e-3fb7-11e5-99ed-d75b50ed9e48.png" target="_blank" rel="noopener"><img src="https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=600&amp;name=Git_4.png" alt="Git_4" width="600" style="width: 600px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=300&amp;name=Git_4.png 300w, https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=600&amp;name=Git_4.png 600w, https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=900&amp;name=Git_4.png 900w, https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=1200&amp;name=Git_4.png 1200w, https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=1500&amp;name=Git_4.png 1500w, https://product.hubspot.com/hs-fs/hubfs/Git_4.png?width=1800&amp;name=Git_4.png 1800w" sizes="(max-width: 600px) 100vw, 600px"></a></p>
+<p>And this is what it looks like once you've submitted the PR request:</p>
+<p><a href="https://cloud.githubusercontent.com/assets/5241432/9189528/b39a7176-3fb7-11e5-87b1-7fed3e63b6bb.png" target="_blank" rel="noopener"><img src="https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=600&amp;name=Git_5.png" alt="Git_5" width="600" style="width: 600px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=300&amp;name=Git_5.png 300w, https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=600&amp;name=Git_5.png 600w, https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=900&amp;name=Git_5.png 900w, https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=1200&amp;name=Git_5.png 1200w, https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=1500&amp;name=Git_5.png 1500w, https://product.hubspot.com/hs-fs/hubfs/Git_5.png?width=1800&amp;name=Git_5.png 1800w" sizes="(max-width: 600px) 100vw, 600px"></a></p>
+<p>You might see a big green button at the bottom that says 'Merge pull request'. Clicking this means you'll merge your changes into the primary branch..</p>
+<p>Sometimes you'll be a co-owner or the sole owner of a repo, in which case you may not need to create a PR to merge your changes. However, it's still a good idea to make one so you can keep a more complete history of your updates and to make sure you always create a new branch when making changes.</p>
+<h2 style="font-weight: bold;">Step 9: Merge a PR</h2>
+<p>Go ahead and click the green 'Merge pull request' button. This will merge your changes into the primary branch.</p>
+<p><a href="https://cloud.githubusercontent.com/assets/5241432/9189587/76631d98-3fb8-11e5-9fdb-17e7dec1c2a4.png" target="_blank" rel="noopener"><img src="https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=600&amp;name=Git_6.png" alt="Git_6" width="600" style="width: 600px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=300&amp;name=Git_6.png 300w, https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=600&amp;name=Git_6.png 600w, https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=900&amp;name=Git_6.png 900w, https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=1200&amp;name=Git_6.png 1200w, https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=1500&amp;name=Git_6.png 1500w, https://product.hubspot.com/hs-fs/hubfs/Git_6.png?width=1800&amp;name=Git_6.png 1800w" sizes="(max-width: 600px) 100vw, 600px"></a></p>
+<p>When you're done, I recommend deleting your branch (too many branches can become messy), so hit that grey 'Delete branch' button as well.</p>
+<p>You can double check that your commits were merged by clicking on the 'Commits' link on the first page of your new repo.</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=600&amp;name=Git_7.png" alt="Git_7" width="600" style="width: 600px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=300&amp;name=Git_7.png 300w, https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=600&amp;name=Git_7.png 600w, https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=900&amp;name=Git_7.png 900w, https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=1200&amp;name=Git_7.png 1200w, https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=1500&amp;name=Git_7.png 1500w, https://product.hubspot.com/hs-fs/hubfs/Git_7.png?width=1800&amp;name=Git_7.png 1800w" sizes="(max-width: 600px) 100vw, 600px"></p>
+<p>This will show you a list of all the commits in that branch. You can see the one I just merged right up top (Merge pull request #1).</p>
+<p><img src="https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=600&amp;name=Git_8.png" alt="Git_8" width="600" style="width: 600px; display: block; margin: 0px auto;" srcset="https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=300&amp;name=Git_8.png 300w, https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=600&amp;name=Git_8.png 600w, https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=900&amp;name=Git_8.png 900w, https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=1200&amp;name=Git_8.png 1200w, https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=1500&amp;name=Git_8.png 1500w, https://product.hubspot.com/hs-fs/hubfs/Git_8.png?width=1800&amp;name=Git_8.png 1800w" sizes="(max-width: 600px) 100vw, 600px"></p>
+<p>You can also see the <a href="https://git-scm.com/docs/git-hash-object" rel="noopener" target="_blank"><span>hash code</span></a> of the commit on the right hand side. A hash code is a unique identifier for that specific commit. It's useful for referring to specific commits and when undoing changes (use the <a href="http://git-scm.com/docs/git-revert" rel="noopener" target="_blank"><span>git revert </span></a>&lt;hash code number&gt; command to backtrack).</p>
+<h2 style="font-weight: bold;">Step 10: Get changes on GitHub back to your computer</h2>
+<p>Right now, the repo on GitHub looks a little different than what you have on your local machine. For example, the commit you made in your branch and merged into the primary branch doesn't exist in the primary branch on your local machine.</p>
+<p>In order to get the most recent changes that you or others have merged on GitHub, use the git pull origin master command (when working on the primary branch). In most cases, this can be shortened to “git pull”.</p>
+<p>
+<script src="https://gist.github.com/cubeton/48b5c726b496d50c3975.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<p>This shows you all the files that have changed and how they've changed.</p>
+<p>Now we can use the <a href="http://git-scm.com/docs/git-log" rel="noopener" target="_blank"><span>git log</span></a> command again to see all new commits.</p>
+<p>(You may need to switch branches back to the primary branch. You can do that using the git checkout master command.)</p>
+<p>
+<script src="https://gist.github.com/cubeton/48f55c5a237cd8e1a238.js" nonce="MjA0Njc1MDM0OCwxODMxNzkyMzgw"></script>
+</p>
+<h2 style="font-weight: bold;">Step 11: Bask in your git glory</h2>
+<p>You've successfully made a PR and merged your code to the primary branch. Congratulations! If you'd like to dive deeper, check out these more advanced tutorials and resources:</p>
+<ul>
+<li><a href="https://training.github.com/" rel="noopener" target="_blank"><span>https://training.github.com/</span><br></a>Github’s official git cheat sheets! Handy for remembering the everyday commands you’ll use.&nbsp;</li>
+<li><a href="https://learngitbranching.js.org/" rel="noopener" target="_blank"><span>https://learngitbranching.js.org/</span><br></a>Confused or intrigued by git’s branch system? That just means you’re human! It’s one of the deepest parts of git, but also arguably the most powerful. Understanding the branch model gives you git superpowers, and this tutorial gives you a way to learn git branches in a visual, intuitive way.</li>
+<li><span><a href="https://git-school.github.io/visualizing-git/#rewritten-history" rel="noopener" target="_blank">https://git-school.github.io/visualizing-git</a></span><br>Another tool for exploring git visually. This one is more of an open-ended sandbox than learngitbranching.js.org<span></span></li>
+<li><span><a href="https://github.com/jlord/git-it-electron#what-to-install" rel="noopener" target="_blank">https://github.com/jlord/git-it-electron</a></span><br>A desktop application that helps you learn git through challenges you have to solve. It has a series of levels, each requiring you to use git commands to arrive at a correct answer.</li>
+<li><span><a href="https://github.com/Gazler/githug" rel="noopener" target="_blank">https://github.com/Gazler/githug</a></span><br>If you liked git-it, Githug is another puzzle-based tutorial designed to give you a practical way of learning git.</li>
+</ul>
+
+</body></html>
